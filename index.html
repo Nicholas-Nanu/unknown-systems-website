@@ -21,19 +21,22 @@
     ::-webkit-scrollbar-thumb { background:var(--teal); }
     ::-webkit-scrollbar-track { background:var(--off); }
 
+    /* ── Nav ── */
     nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 5vw; height:64px; background:rgba(250,250,248,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); }
-    .nav-logo { display:flex; align-items:center; text-decoration:none; height:38px; }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; }
+    .nav-logo img { height:28px; width:auto; display:block; }
     .nav-links { display:flex; gap:36px; list-style:none; }
     .nav-links a { font-size:12px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
     .nav-links a:hover { color:var(--teal); }
 
+    /* ── Layout ── */
     .container { max-width:1140px; margin:0 auto; padding:0 5vw; }
     section { padding:120px 0; }
-
     .section-label { display:flex; align-items:center; gap:14px; font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:56px; }
     .section-label::after { content:''; flex:1; max-width:60px; height:1px; background:var(--teal); opacity:0.4; }
     hr.rule { border:none; border-top:1px solid var(--rule); }
 
+    /* ── Hero ── */
     #home { padding-top:180px; padding-bottom:120px; min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
     .hero-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--mid); margin-bottom:28px; opacity:0; animation:fadeUp 0.8s 0.1s ease forwards; }
     .hero-headline { font-family:var(--serif); font-size:clamp(48px,7.5vw,108px); font-weight:300; line-height:1.03; letter-spacing:-0.01em; color:var(--ink); max-width:18ch; margin-bottom:48px; opacity:0; animation:fadeUp 0.9s 0.2s ease forwards; }
@@ -47,6 +50,7 @@
     .hero-stat-num { font-family:var(--serif); font-size:36px; font-weight:300; color:var(--ink); line-height:1; margin-bottom:6px; }
     .hero-stat-label { font-size:11px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--light); }
 
+    /* ── About ── */
     #about { background:var(--off); }
     .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
     .about-headline { font-family:var(--serif); font-size:clamp(32px,3.5vw,52px); font-weight:300; line-height:1.15; color:var(--ink); }
@@ -60,10 +64,10 @@
     .pillar-title { font-size:15px; font-weight:500; color:var(--ink); margin-bottom:10px; }
     .pillar-desc { font-size:13.5px; font-weight:300; color:var(--mid); line-height:1.7; }
 
+    /* ── Products ── */
     .products-header { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; margin-bottom:72px; }
     .products-headline { font-family:var(--serif); font-size:clamp(32px,3.5vw,52px); font-weight:300; line-height:1.15; color:var(--ink); }
     .products-sub { font-size:16px; font-weight:300; color:var(--mid); line-height:1.75; }
-
     .product-card { border:1px solid var(--rule); background:var(--white); display:grid; grid-template-columns:1fr 1fr; overflow:hidden; transition:border-color 0.25s; }
     .product-card:hover { border-color:var(--teal); }
     .product-card-left { border-right:1px solid var(--rule); display:flex; flex-direction:column; }
@@ -82,12 +86,12 @@
     .product-features li:last-child { border-bottom:none; }
     .product-features li::before { content:'—'; color:var(--teal); font-size:12px; flex-shrink:0; }
     .product-number { font-family:var(--serif); font-size:11px; font-weight:300; letter-spacing:0.14em; color:var(--light); margin-top:40px; }
-
     .coming-card { margin-top:20px; border:1px dashed var(--rule); padding:48px 56px; display:flex; align-items:center; justify-content:space-between; transition:border-color 0.25s; }
     .coming-card:hover { border-color:var(--teal); }
     .coming-text { font-family:var(--serif); font-size:28px; font-weight:300; font-style:italic; color:var(--light); }
     .coming-label { font-size:11px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--light); }
 
+    /* ── Contact ── */
     #contact { background:var(--ink); }
     #contact .section-label { color:var(--teal); }
     .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
@@ -103,9 +107,12 @@
     .contact-item-value a:hover { color:var(--teal); }
     .contact-item-note { font-size:12px; font-weight:300; color:rgba(250,250,248,0.35); }
 
+    /* ── Footer ── */
     footer { background:var(--ink); border-top:1px solid rgba(255,255,255,0.07); padding:28px 5vw; display:flex; align-items:center; justify-content:space-between; }
+    .footer-logo img { height:20px; width:auto; display:block; filter:invert(1); opacity:0.35; }
     .footer-copy { font-size:11px; font-weight:300; color:rgba(250,250,248,0.2); letter-spacing:0.06em; }
 
+    /* ── Animations ── */
     @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
     .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease,transform 0.7s ease; }
     .reveal.visible { opacity:1; transform:none; }
@@ -113,6 +120,7 @@
     .reveal-delay-2 { transition-delay:0.2s; }
     .reveal-delay-3 { transition-delay:0.3s; }
 
+    /* ── Mobile ── */
     @media (max-width:768px) {
       section { padding:80px 0; }
       #home { padding-top:140px; }
@@ -131,12 +139,10 @@
 </head>
 <body>
 
+  <!-- ── Navigation ── -->
   <nav>
-    <a href="#home" class="nav-logo" aria-label="Unknown Systems home">
-      <!-- US logo: crop viewBox to the actual content area (x=582,y=1909, w=3836,h=1163) -->
-      <svg viewBox="582 1909 3836 1163" xmlns="http://www.w3.org/2000/svg" style="height:30px;width:auto;max-width:200px;" aria-hidden="true">
-        <image href="assets/us-logo.svg" x="0" y="0" width="5000" height="5000"/>
-      </svg>
+    <a href="#home" class="nav-logo" aria-label="Unknown Systems">
+      <img src="assets/us-logo.png" alt="Unknown Systems" />
     </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
@@ -145,6 +151,7 @@
     </ul>
   </nav>
 
+  <!-- ── Hero ── -->
   <section id="home">
     <div class="container">
       <p class="hero-eyebrow">Unknown Systems Ltd — London, UK</p>
@@ -170,6 +177,7 @@
 
   <hr class="rule" />
 
+  <!-- ── About ── -->
   <section id="about">
     <div class="container">
       <div class="section-label">About Unknown Systems</div>
@@ -205,6 +213,7 @@
 
   <hr class="rule" />
 
+  <!-- ── Products ── -->
   <section id="products">
     <div class="container">
       <div class="section-label">What we build</div>
@@ -215,8 +224,8 @@
 
       <div class="product-card reveal">
         <div class="product-card-left">
+          <!-- Dark strip with Nanu logo (inlined SVG — no file dependency) -->
           <div class="product-logo-strip">
-            <!-- Nanu logo SVG inlined — white text + teal dot on dark background -->
             <svg viewBox="310 855 1400 340" xmlns="http://www.w3.org/2000/svg" style="height:52px;width:auto;" aria-label="Nanu">
               <path fill="#ffffff" d="m508.73 872.95c-14.98 0-27.12 12.13-27.12 27.13v128.83l-106-139.19c-7.49-9.64-15.35-16.07-28.56-16.07h-5.7c-15.35 0-27.48 12.14-27.48 27.5v198.78c0 15 12.13 27.13 27.12 27.13 14.99 0 27.13-12.13 27.13-27.13v-133.83l109.92 144.19c7.5 9.64 15.34 16.05 28.55 16.05h1.79c15.34 0 27.48-12.13 27.48-27.48v-198.78c0-15-12.14-27.13-27.13-27.13z"/>
               <path fill="#ffffff" d="m930.22 1089.58l-87.08-196.65c-6.07-13.56-16.77-21.77-31.76-21.77h-3.22c-14.99 0-26.05 8.21-32.12 21.77l-87.08 196.65c-1.78 3.93-3.21 7.86-3.21 11.78 0 14.28 11.06 25.7 25.34 25.7 11.42 0 20.7-6.43 25.34-17.13l17.48-41.05 54.97-130.98 34.62 82.44 20.34 48.54 16.77 39.26c5 11.42 13.57 18.92 26.42 18.92 14.63 0 26.05-11.78 26.05-26.41 0-3.57-1.07-7.14-2.86-11.07z"/>
@@ -257,6 +266,7 @@
 
   <hr class="rule" />
 
+  <!-- ── Contact ── -->
   <section id="contact">
     <div class="container">
       <div class="section-label">Get in touch</div>
@@ -268,11 +278,11 @@
         <div class="contact-items reveal reveal-delay-2">
           <div class="contact-item">
             <div class="contact-item-label">General enquiries</div>
-            <div class="contact-item-value"><a href="mailto:info@nanu-app.com">info@nanu-app.com</a></div>
+            <div class="contact-item-value"><a href="mailto:info@unknown-systems.com">info@unknown-systems.com</a></div>
           </div>
           <div class="contact-item">
             <div class="contact-item-label">Partnerships & Data</div>
-            <div class="contact-item-value"><a href="mailto:info@nanu-app.com">info@nanu-app.com</a></div>
+            <div class="contact-item-value"><a href="mailto:info@unknown-systems.com">info@unknown-systems.com</a></div>
             <div class="contact-item-note">Communities, research orgs, podcast collabs</div>
           </div>
           <div class="contact-item">
@@ -289,11 +299,11 @@
     </div>
   </section>
 
+  <!-- ── Footer ── -->
   <footer>
-    <!-- US logo white/faded in footer -->
-    <svg viewBox="582 1909 3836 1163" xmlns="http://www.w3.org/2000/svg" style="height:20px;width:auto;max-width:140px;opacity:0.3;filter:invert(1);" aria-label="Unknown Systems">
-      <image href="assets/us-logo.svg" x="0" y="0" width="5000" height="5000"/>
-    </svg>
+    <div class="footer-logo">
+      <img src="assets/us-logo.png" alt="Unknown Systems" />
+    </div>
     <div class="footer-copy">© 2026 Unknown Systems Ltd. All rights reserved.</div>
   </footer>
 
