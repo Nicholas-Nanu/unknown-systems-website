@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unknown Systems — Community & Citizen Science Software</title>
+  <meta name="description" content="Unknown Systems builds community-driven software and citizen science platforms for the world's most complex questions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white:#FAFAF8; --off:#F2F0EC; --ink:#0D0D0B; --mid:#5A5A56;
+      --light:#B8B8B2; --rule:#E2E0DB; --teal:#1FC2C2;
+      --serif:'Cormorant Garamond',Georgia,serif; --sans:'DM Sans',system-ui,sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background:var(--white); color:var(--ink); font-family:var(--sans); font-weight:300; font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+    ::-webkit-scrollbar { width:3px; }
+    ::-webkit-scrollbar-thumb { background:var(--teal); }
+    ::-webkit-scrollbar-track { background:var(--off); }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:0 5vw; height:64px; background:rgba(250,250,248,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--rule); }
+    .nav-logo { display:flex; align-items:center; text-decoration:none; height:38px; }
+    .nav-links { display:flex; gap:36px; list-style:none; }
+    .nav-links a { font-size:12px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; color:var(--mid); text-decoration:none; transition:color 0.2s; }
+    .nav-links a:hover { color:var(--teal); }
+
+    .container { max-width:1140px; margin:0 auto; padding:0 5vw; }
+    section { padding:120px 0; }
+
+    .section-label { display:flex; align-items:center; gap:14px; font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--teal); margin-bottom:56px; }
+    .section-label::after { content:''; flex:1; max-width:60px; height:1px; background:var(--teal); opacity:0.4; }
+    hr.rule { border:none; border-top:1px solid var(--rule); }
+
+    #home { padding-top:180px; padding-bottom:120px; min-height:100vh; display:flex; flex-direction:column; justify-content:center; }
+    .hero-eyebrow { font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--mid); margin-bottom:28px; opacity:0; animation:fadeUp 0.8s 0.1s ease forwards; }
+    .hero-headline { font-family:var(--serif); font-size:clamp(48px,7.5vw,108px); font-weight:300; line-height:1.03; letter-spacing:-0.01em; color:var(--ink); max-width:18ch; margin-bottom:48px; opacity:0; animation:fadeUp 0.9s 0.2s ease forwards; }
+    .hero-headline em { font-style:italic; color:var(--teal); }
+    .hero-body { font-size:17px; font-weight:300; color:var(--mid); max-width:52ch; line-height:1.75; margin-bottom:56px; opacity:0; animation:fadeUp 0.9s 0.35s ease forwards; }
+    .hero-cta { display:inline-flex; align-items:center; gap:10px; font-size:13px; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); text-decoration:none; padding-bottom:4px; border-bottom:1px solid var(--teal); transition:color 0.2s,gap 0.2s; opacity:0; animation:fadeUp 0.9s 0.5s ease forwards; }
+    .hero-cta:hover { color:var(--teal); gap:16px; }
+    .hero-rule { margin-top:80px; display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--rule); opacity:0; animation:fadeUp 0.9s 0.65s ease forwards; }
+    .hero-stat { padding:32px 40px 0 0; }
+    .hero-stat+.hero-stat { padding-left:40px; border-left:1px solid var(--rule); }
+    .hero-stat-num { font-family:var(--serif); font-size:36px; font-weight:300; color:var(--ink); line-height:1; margin-bottom:6px; }
+    .hero-stat-label { font-size:11px; font-weight:400; letter-spacing:0.14em; text-transform:uppercase; color:var(--light); }
+
+    #about { background:var(--off); }
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .about-headline { font-family:var(--serif); font-size:clamp(32px,3.5vw,52px); font-weight:300; line-height:1.15; color:var(--ink); }
+    .about-headline em { font-style:italic; }
+    .about-body p { font-size:16px; font-weight:300; color:var(--mid); line-height:1.8; margin-bottom:20px; }
+    .about-body p:last-child { margin-bottom:0; }
+    .about-body strong { color:var(--ink); font-weight:500; }
+    .pillars { margin-top:72px; display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); }
+    .pillar { background:var(--off); padding:36px 32px; }
+    .pillar-num { font-family:var(--serif); font-size:11px; letter-spacing:0.18em; color:var(--teal); margin-bottom:16px; }
+    .pillar-title { font-size:15px; font-weight:500; color:var(--ink); margin-bottom:10px; }
+    .pillar-desc { font-size:13.5px; font-weight:300; color:var(--mid); line-height:1.7; }
+
+    .products-header { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:end; margin-bottom:72px; }
+    .products-headline { font-family:var(--serif); font-size:clamp(32px,3.5vw,52px); font-weight:300; line-height:1.15; color:var(--ink); }
+    .products-sub { font-size:16px; font-weight:300; color:var(--mid); line-height:1.75; }
+
+    .product-card { border:1px solid var(--rule); background:var(--white); display:grid; grid-template-columns:1fr 1fr; overflow:hidden; transition:border-color 0.25s; }
+    .product-card:hover { border-color:var(--teal); }
+    .product-card-left { border-right:1px solid var(--rule); display:flex; flex-direction:column; }
+    .product-logo-strip { background:#0D1B21; padding:32px 48px; display:flex; align-items:center; }
+    .product-card-body { padding:48px 56px 56px; flex:1; display:flex; flex-direction:column; }
+    .product-tag { display:inline-flex; align-items:center; gap:7px; font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); margin-bottom:20px; }
+    .product-tag .tag-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); }
+    .product-tagline { font-size:13px; font-weight:400; letter-spacing:0.18em; text-transform:uppercase; color:var(--light); margin-bottom:28px; }
+    .product-desc { font-size:15px; font-weight:300; color:var(--mid); line-height:1.8; margin-bottom:40px; max-width:46ch; flex:1; }
+    .product-link { display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--teal); text-decoration:none; transition:gap 0.2s; }
+    .product-link:hover { gap:14px; }
+    .product-card-right { padding:56px; background:var(--off); display:flex; flex-direction:column; justify-content:space-between; }
+    .product-features-label { font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--light); margin-bottom:28px; }
+    .product-features { list-style:none; flex:1; }
+    .product-features li { display:flex; align-items:baseline; gap:12px; font-size:14px; font-weight:300; color:var(--mid); padding:13px 0; border-bottom:1px solid var(--rule); line-height:1.5; }
+    .product-features li:last-child { border-bottom:none; }
+    .product-features li::before { content:'—'; color:var(--teal); font-size:12px; flex-shrink:0; }
+    .product-number { font-family:var(--serif); font-size:11px; font-weight:300; letter-spacing:0.14em; color:var(--light); margin-top:40px; }
+
+    .coming-card { margin-top:20px; border:1px dashed var(--rule); padding:48px 56px; display:flex; align-items:center; justify-content:space-between; transition:border-color 0.25s; }
+    .coming-card:hover { border-color:var(--teal); }
+    .coming-text { font-family:var(--serif); font-size:28px; font-weight:300; font-style:italic; color:var(--light); }
+    .coming-label { font-size:11px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--light); }
+
+    #contact { background:var(--ink); }
+    #contact .section-label { color:var(--teal); }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+    .contact-headline { font-family:var(--serif); font-size:clamp(36px,4vw,60px); font-weight:300; line-height:1.1; color:var(--white); margin-bottom:24px; }
+    .contact-headline em { font-style:italic; color:var(--teal); }
+    .contact-sub { font-size:15px; font-weight:300; color:rgba(250,250,248,0.45); line-height:1.75; max-width:42ch; }
+    .contact-items { display:flex; flex-direction:column; }
+    .contact-item { padding:28px 0; border-bottom:1px solid rgba(255,255,255,0.07); display:flex; flex-direction:column; gap:6px; }
+    .contact-item:first-child { border-top:1px solid rgba(255,255,255,0.07); }
+    .contact-item-label { font-size:10px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); }
+    .contact-item-value { font-size:15px; font-weight:300; color:var(--white); }
+    .contact-item-value a { color:var(--white); text-decoration:none; transition:color 0.2s; }
+    .contact-item-value a:hover { color:var(--teal); }
+    .contact-item-note { font-size:12px; font-weight:300; color:rgba(250,250,248,0.35); }
+
+    footer { background:var(--ink); border-top:1px solid rgba(255,255,255,0.07); padding:28px 5vw; display:flex; align-items:center; justify-content:space-between; }
+    .footer-copy { font-size:11px; font-weight:300; color:rgba(250,250,248,0.2); letter-spacing:0.06em; }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease,transform 0.7s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+    .reveal-delay-1 { transition-delay:0.1s; }
+    .reveal-delay-2 { transition-delay:0.2s; }
+    .reveal-delay-3 { transition-delay:0.3s; }
+
+    @media (max-width:768px) {
+      section { padding:80px 0; }
+      #home { padding-top:140px; }
+      .hero-rule { grid-template-columns:1fr; }
+      .hero-stat+.hero-stat { border-left:none; border-top:1px solid var(--rule); padding-left:0; }
+      .about-grid,.products-header,.contact-grid { grid-template-columns:1fr; gap:40px; }
+      .pillars { grid-template-columns:1fr; }
+      .product-card { grid-template-columns:1fr; }
+      .product-logo-strip { padding:24px 28px; }
+      .product-card-body { padding:32px 28px 40px; }
+      .product-card-right { padding:36px 28px; }
+      .coming-card { padding:36px 28px; flex-direction:column; align-items:flex-start; gap:12px; }
+      footer { flex-direction:column; gap:12px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="nav-logo" aria-label="Unknown Systems home">
+      <!-- US logo: crop viewBox to the actual content area (x=582,y=1909, w=3836,h=1163) -->
+      <svg viewBox="582 1909 3836 1163" xmlns="http://www.w3.org/2000/svg" style="height:30px;width:auto;max-width:200px;" aria-hidden="true">
+        <image href="assets/us-logo.svg" x="0" y="0" width="5000" height="5000"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home">
+    <div class="container">
+      <p class="hero-eyebrow">Unknown Systems Ltd — London, UK</p>
+      <h1 class="hero-headline">Software for the <em>questions</em> worth asking.</h1>
+      <p class="hero-body">We build community-driven platforms and citizen science systems that help people explore, document, and make sense of the world's most complex and unexplained phenomena — with rigour, transparency, and care.</p>
+      <a href="#about" class="hero-cta">Learn more <span>→</span></a>
+      <div class="hero-rule">
+        <div class="hero-stat">
+          <div class="hero-stat-num">01</div>
+          <div class="hero-stat-label">Products live</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">9</div>
+          <div class="hero-stat-label">Research categories</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Global</div>
+          <div class="hero-stat-label">Community reach</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="about">
+    <div class="container">
+      <div class="section-label">About Unknown Systems</div>
+      <div class="about-grid">
+        <div>
+          <h2 class="about-headline reveal">Community and citizen science, <em>built right.</em></h2>
+        </div>
+        <div class="about-body reveal reveal-delay-1">
+          <p>Unknown Systems is a UK-based software company focused on one thing: building platforms that let communities come together to explore, document, and understand complex questions that mainstream tools handle poorly — or not at all.</p>
+          <p>We believe <strong>structure creates signal.</strong> Most community platforms reward noise over knowledge, virality over credibility. Our systems are designed to invert that — giving contributors the tools to document experiences properly, evaluate evidence rigorously, and build archives that actually grow in value over time.</p>
+          <p>We operate with a clear ethical position: <strong>no advertising, no data selling.</strong> The people who use our platforms own their experience of them.</p>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">Community-first architecture</div>
+          <div class="pillar-desc">Platforms built around how communities actually work — contribution, credibility, and peer governance rather than algorithmic ranking.</div>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">Structured data at scale</div>
+          <div class="pillar-desc">Citizen submissions that produce research-grade data. Schema design, evidence attachment, and metadata capture built in from the start.</div>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">AI-augmented, human-governed</div>
+          <div class="pillar-desc">AI tools that assist documentation and analysis — never replacing the human judgement at the centre of serious inquiry.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="products">
+    <div class="container">
+      <div class="section-label">What we build</div>
+      <div class="products-header">
+        <h2 class="products-headline reveal">Our first product is live.</h2>
+        <p class="products-sub reveal reveal-delay-1">We build focused, high-integrity platforms — not sprawling suites. Each product is designed to be the default home for a specific kind of inquiry that has nowhere good to go today.</p>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-card-left">
+          <div class="product-logo-strip">
+            <!-- Nanu logo SVG inlined — white text + teal dot on dark background -->
+            <svg viewBox="310 855 1400 340" xmlns="http://www.w3.org/2000/svg" style="height:52px;width:auto;" aria-label="Nanu">
+              <path fill="#ffffff" d="m508.73 872.95c-14.98 0-27.12 12.13-27.12 27.13v128.83l-106-139.19c-7.49-9.64-15.35-16.07-28.56-16.07h-5.7c-15.35 0-27.48 12.14-27.48 27.5v198.78c0 15 12.13 27.13 27.12 27.13 14.99 0 27.13-12.13 27.13-27.13v-133.83l109.92 144.19c7.5 9.64 15.34 16.05 28.55 16.05h1.79c15.34 0 27.48-12.13 27.48-27.48v-198.78c0-15-12.14-27.13-27.13-27.13z"/>
+              <path fill="#ffffff" d="m930.22 1089.58l-87.08-196.65c-6.07-13.56-16.77-21.77-31.76-21.77h-3.22c-14.99 0-26.05 8.21-32.12 21.77l-87.08 196.65c-1.78 3.93-3.21 7.86-3.21 11.78 0 14.28 11.06 25.7 25.34 25.7 11.42 0 20.7-6.43 25.34-17.13l17.48-41.05 54.97-130.98 34.62 82.44 20.34 48.54 16.77 39.26c5 11.42 13.57 18.92 26.42 18.92 14.63 0 26.05-11.78 26.05-26.41 0-3.57-1.07-7.14-2.86-11.07z"/>
+              <path fill="#ffffff" d="m1278.2 872.95c-15 0-27.13 12.13-27.13 27.13v128.83l-106-139.19c-7.49-9.64-15.34-16.07-28.54-16.07h-5.72c-15.35 0-27.48 12.14-27.48 27.5v198.78c0 15 12.13 27.13 27.12 27.13 14.99 0 27.13-12.13 27.13-27.13v-133.83l109.92 144.19c7.5 9.64 15.34 16.05 28.56 16.05h1.78c15.34 0 27.48-12.13 27.48-27.48v-198.78c0-15-12.14-27.13-27.12-27.13z"/>
+              <path fill="#ffffff" d="m1658.64 872.95c-15.34 0-27.48 12.13-27.48 27.47v117.79c0 39.61-20.34 59.95-53.89 59.95-33.55 0-53.9-21.05-53.9-61.74v-116c0-15.34-12.13-27.47-27.47-27.47-15.35 0-27.48 12.13-27.48 27.47v117.43c0 73.52 41.04 110.99 108.13 110.99 67.11 0 109.58-37.11 109.58-112.79v-115.63c0-15.34-12.13-27.47-27.49-27.47z"/>
+              <path fill="#1fc2c2" d="m834.31 1047.44c0 13.74-11.15 24.89-24.9 24.89-13.74 0-24.89-11.15-24.89-24.89 0-13.75 11.15-24.89 24.89-24.89 13.75 0 24.9 11.14 24.9 24.89z"/>
+            </svg>
+          </div>
+          <div class="product-card-body">
+            <div class="product-tag"><span class="tag-dot"></span> Live product</div>
+            <div class="product-tagline">Discover · Discuss · Disclose</div>
+            <p class="product-desc">A credibility-first, community-driven platform for exploring and documenting unexplained phenomena. Nanu spans nine research categories — from UAP and consciousness to cryptids, folklore, and natural anomalies — giving experiencers, researchers, and enthusiasts a structured home for serious inquiry.</p>
+            <a href="https://www.projectnanu.com/" target="_blank" rel="noopener" class="product-link">Visit Nanu →</a>
+          </div>
+        </div>
+        <div class="product-card-right">
+          <div>
+            <div class="product-features-label">Platform features</div>
+            <ul class="product-features">
+              <li>Structured experience submission with full metadata capture</li>
+              <li>AI interviewer to improve report completeness and tagging</li>
+              <li>Community credibility weighting and evidence attachment</li>
+              <li>Peer review pathway for high-quality cases</li>
+              <li>Searchable global archive, timeline, and heatmap</li>
+              <li>No advertising. No data selling. GDPR-led.</li>
+            </ul>
+          </div>
+          <div class="product-number">Product 01 / Unknown Systems Ltd</div>
+        </div>
+      </div>
+
+      <div class="coming-card reveal reveal-delay-1">
+        <div class="coming-text">More to come.</div>
+        <div class="coming-label">Further products in development</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-label">Get in touch</div>
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-headline reveal">Let's build something <em>worth building.</em></h2>
+          <p class="contact-sub reveal reveal-delay-1">Whether you're interested in partnering, exploring data collaboration, or just want to understand what we're building — we'd like to hear from you.</p>
+        </div>
+        <div class="contact-items reveal reveal-delay-2">
+          <div class="contact-item">
+            <div class="contact-item-label">General enquiries</div>
+            <div class="contact-item-value"><a href="mailto:info@nanu-app.com">info@nanu-app.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Partnerships & Data</div>
+            <div class="contact-item-value"><a href="mailto:info@nanu-app.com">info@nanu-app.com</a></div>
+            <div class="contact-item-note">Communities, research orgs, podcast collabs</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Product support</div>
+            <div class="contact-item-value"><a href="mailto:support@nanu-app.com">support@nanu-app.com</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Registered</div>
+            <div class="contact-item-value">Unknown Systems Ltd</div>
+            <div class="contact-item-note">England & Wales</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <!-- US logo white/faded in footer -->
+    <svg viewBox="582 1909 3836 1163" xmlns="http://www.w3.org/2000/svg" style="height:20px;width:auto;max-width:140px;opacity:0.3;filter:invert(1);" aria-label="Unknown Systems">
+      <image href="assets/us-logo.svg" x="0" y="0" width="5000" height="5000"/>
+    </svg>
+    <div class="footer-copy">© 2026 Unknown Systems Ltd. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
