@@ -525,8 +525,21 @@
 
     /* ── MOBILE ── */
     @media (max-width: 768px) {
+      /* Nav: stack logo above links */
+      nav {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 14px 5vw 12px;
+        gap: 10px;
+      }
+      .nav-left { width: 100%; }
+      .nav-tag { display: none; }
+      .nav-links { width: 100%; gap: 24px; padding-bottom: 2px; }
+      .nav-links a { font-size: 10px; }
+
+      #home { padding-top: 148px; }
       section { padding: 80px 0; }
-      #home { padding-top: 120px; }
       .hero-stats { grid-template-columns: 1fr; }
       .hero-stat { border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
       .about-grid, .products-header, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -535,7 +548,6 @@
       .product-logo-strip, .product-card-body, .product-card-right { padding-left: 28px; padding-right: 28px; }
       .coming-card { padding: 32px 28px; flex-direction: column; align-items: flex-start; gap: 10px; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
-      .nav-tag { display: none; }
     }
   </style>
 </head>
